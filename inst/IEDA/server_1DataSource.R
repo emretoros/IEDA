@@ -124,9 +124,9 @@ output$SelDimMeas = renderUI({
         paste0("rb", x),
         x,
         choices = c(
-          Dimension = "Kategorik",
-          Measure = "Sayisal",
-          Exclude = "Disarda birak"
+          Kategorik = "Kategorik",
+          Sayisal = "Sayisal",
+          DisardaBirak = "Disarda birak"
         ),
         selected = rbSel,
         inline = TRUE
@@ -218,10 +218,10 @@ selectdata = reactive({
   seldata = data.frame(FeatureName = character(), FeatureValue = character(), stringsAsFactors = FALSE)
   if(length(measures)>=1)
     seldata = rbind(seldata,
-                    data.frame(FeatureName = paste("Measures"), FeatureValue = measures, stringsAsFactors = FALSE))
+                    data.frame(FeatureName = paste("Sayisal"), FeatureValue = measures, stringsAsFactors = FALSE))
   if(length(dimensions)>=1)
     seldata = rbind(seldata,
-                    data.frame(FeatureName = paste("Dimensions"), FeatureValue = dimensions, stringsAsFactors = FALSE))
+                    data.frame(FeatureName = paste("Kategorik"), FeatureValue = dimensions, stringsAsFactors = FALSE))
   return(seldata)
 })
 
