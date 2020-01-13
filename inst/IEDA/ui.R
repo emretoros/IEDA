@@ -8,7 +8,7 @@ library(evaluate)
 library(shinycssloaders)
 
 
-ui = dashboardPage(title = "InteractiveEDA",
+ui = dashboardPage(title = "Kesifsel Veri Analizi ",
   skin = "blue",
   dashboardHeader(title = div(img(src="Title.png",height=50,width=150,align = "left"),
                               "IEDA"),
@@ -18,16 +18,16 @@ ui = dashboardPage(title = "InteractiveEDA",
   dashboardSidebar(
     width = 250,
     sidebarMenu(id = "MenuTabs",
-      menuItem("Home", tabName = "Home", icon = icon("home")),
-      menuItem("Data Source", tabName = "DataSource", icon = icon("file")),
-      menuItem("Univariate Analysis", tabName = "Univariate", icon = icon("bar-chart")),
-      menuItem("Bi Variate Scatter Plot", tabName = "ScatterPlot", icon = icon("dot-circle-o")),
-      menuItem("Bi Variate Box Plot", tabName = "BoxPlot", icon = icon("sliders")),
-      menuItem("Bi Variate Group Bar Plot", tabName = "GBarPlot", icon = icon("bar-chart")),
-      menuItem("Bi Variate Group Histogram", tabName = "GHistPlot", icon = icon("area-chart")),
-      menuItem("Multi Variate Scatter Plot", tabName = "MultiScatterPlot", icon = icon("dot-circle-o")),
-      menuItem("Multi Variate Box Plot", tabName = "MultiBoxPlot", icon = icon("sliders")),
-      menuItem("EDA", tabName = "EDA", icon = icon("info-circle"))
+      menuItem("Ana Sayfa", tabName = "Ana Sayfa", icon = icon("home")),
+      menuItem("Veri Yukleme", tabName = "VeriYukleme", icon = icon("file")),
+      menuItem("Tek Degiskenli Analiz", tabName = "TekDegiskenliAnaliz", icon = icon("bar-chart")),
+      menuItem("Iki Degiskenli Sacinim", tabName = "IkiDegiskenliSacinim", icon = icon("dot-circle-o")),
+      menuItem("Iki Degiskenli Kutu", tabName = "IkiDegiskenliKutu", icon = icon("sliders")),
+      menuItem("Iki Degiskenli Grup Sutun", tabName = "IkiDegiskenliGrupSutun", icon = icon("bar-chart")),
+      menuItem("Iki Degiskenli Grup Histogram", tabName = "IkiDegiskenliGrupHistogram", icon = icon("area-chart")),
+      menuItem("Cok Degiskenli Sacinim", tabName = "CokDegiskenliSacinim", icon = icon("dot-circle-o")),
+      menuItem("Cok Degiskenli Kutu", tabName = "CokDegiskenliKutu", icon = icon("sliders")),
+      menuItem("KVA", tabName = "KVA", icon = icon("info-circle"))
     )
   ),
 
