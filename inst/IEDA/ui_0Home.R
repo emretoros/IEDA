@@ -2,40 +2,23 @@ fluidPage(
   fixedRow(
   column(12,
          align = "left",
-         h1("Interactive Exploratory Data Analysis: "),
-         h2("An application for exploratory data
-            analysis thru Interactive Visualizations"),
+         h1("KVA: "),
+         h2("Etkileşimli Grafikler ile Kesifsel Veri Analizi"),
          HTML("<div style='height: 25px;'>"),
          HTML("</div>"),
-         h3("About"),
-         h4("Exploratory Data Analysis is one of the key components of a data science project.
-            It is a crucial step to take before diving in to the machine learning or data modeling.
-            EDA can sometimes be time consuming due to reasons like huge number of variables in the data set,
-            writing code for each plot or group of plots.
-            In order to eliminate these difficulties and reduce the time here is a simple tool which provides
-            different interactive visualizations used in EDA just on click of a button."),
+         h3("KVA Nedir?"),
+         h4("Keşifsel veri analizi, herhangi bir istatistiki analiz icin temel olusturan birincil analiz hamlesidir.
+            Cikarimsal istatistiki analizler, bu temel analizlerin bulgularina göre sekillenir"),
          HTML("<div style='height: 5px;'>"),
          HTML("</div>"),
          h3("Manual"),
-         h4("IEDA is a simple application and is easy to use. Follow the below series of simple steps
-            to utilise the tool."),
+         h4("KVA uygulamasi ile kesifsel veri analizini yapmak icin asagidaki adimlari takip ediniz ."),
          tags$ol(
-           tags$li(h4("Upload the dataset file in the selected format in the \"DataSource\" tab
-                      and click on submit.")),
-           tags$li(h4("On submit, you can do pre-processing of Data in the \"Data Processing\"
-                      Pane on the right side.")),
-           tags$li(h4("In the \"Data Strucure\" tab, you can view the strucure of data.")),
-           tags$li(h4("In the \"Data Preview\" tab, you can view the actual data.")),
-           tags$li(h4("In the \"Select Column Features\" tab, you can choose the feature of the
-                      columns.")),
-           tags$li(h4("Select Dimensions for Discrete or non continuous variables")),
-           tags$li(h4("Select Measures for Continuous variables")),
-           tags$li(h4("Select Exclude to exclude the variable in the EDA")),
-           tags$li(h4("Once the pre-processing is completed, click on Explore button on the
-                      bottom in the \"Select Column Features\" tab.")),
-           tags$li(h4("On clicking the \"Explore Button\", Seven different interactive
-                      visualizations with options are presented and can be accessed in the
-                      sidebar panel."))
+           tags$li(h4("Veri Yukleme sekmesinden bilgisayarinizda buluna dosyanizi bulunuz ve Yukle butonu ile uygulamaya yukleyiniz")),
+           tags$li(h4("Veri yükleme islemi bittiginde, Veri Isleme sekmesindeki secenekleri kullanarak verinizi inceleyiniz ")),
+           tags$li(h4("Degisken Olcum Seviyesi sekmesini kullanarak degiskenlerinizin olcum seviyelerini kategorik veya sayisal olarak seciniz.")),
+           tags$li(h4("Analiz icin hazirla butonu ile veriyi grafikler icin hazirlayiniz")),
+          
          ),
          h3("More about Exploratory Data Analysis can be viewed in the EDA Tab."),
          HTML("<div style='height: 5px;'>"),
