@@ -5,7 +5,7 @@ library(shinydashboard)
 # **************************Select Inputs**************************
 output$FileInput = renderUI({
   fileTypeString = switch(input$fileType, excel = ".xlsx", rda = ".rda", csv = ".csv")
-  fileInput("datafile", "Dosyanızı buradan yükleyiniz", accept = c(fileTypeString))
+  fileInput("datafile", "Dosyanizi buradan yukleyiniz", accept = c(fileTypeString))
 })
 
 output$SelectSheet = renderUI({
@@ -105,7 +105,7 @@ options = list(lengthMenu = c(5, 30, 50), pageLength = 5, scrollX = TRUE, scroll
 fn_GetDataStructure = function(idata){
   dstr = data.frame(Variable = idata %>% colnames,
                     Class = idata %>% sapply(class), stringsAsFactors = FALSE)
-  dstr = dstr %>% mutate(DMClass = if_else(Class %in% c("double","integer","numeric"), "Measure","Dimension"))
+  dstr = dstr %>% mutate(DMClass = if_else(Class %in% c("double","integer","numeric"), "Sayisal","Kategorik"))
   row.names(dstr) = NULL
   return(dstr)
 }
@@ -124,9 +124,9 @@ output$SelDimMeas = renderUI({
         paste0("rb", x),
         x,
         choices = c(
-          Dimension = "Dimension",
-          Measure = "Measure",
-          Exclude = "Exclude"
+          Dimension = "Kategorik",
+          Measure = "Sayisal",
+          Exclude = "Disarda birak"
         ),
         selected = rbSel,
         inline = TRUE
@@ -144,8 +144,8 @@ finalInputData = eventReactive(input$btExplore, {
     udstr = data.frame(Variable = names(udstr), UserClass = udstr, stringsAsFactors = FALSE)
     row.names(udstr) = NULL
     udstr$UserClass = str_trim(udstr$UserClass, side = "both")
-    dnames = udstr %>% filter(UserClass == "Dimension") %>% select(Variable) %>% collect %>% .[["Variable"]]
-    mnames = udstr %>% filter(UserClass == "Measure") %>% select(Variable) %>% collect %>% .[["Variable"]]
+    dnames = udstr %>% filter(UserClass == "Kategorik") %>% select(Variable) %>% collect %>% .[["Variable"]]
+    mnames = udstr %>% filter(UserClass == "Sayisal") %>% select(Variable) %>% collect %>% .[["Variable"]]
     usrStructData = uploadData$fiData
     if(!is.null(dnames))
     {
