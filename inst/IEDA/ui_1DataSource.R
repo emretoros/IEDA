@@ -9,7 +9,7 @@ fluidPage(
         conditionalPanel("input.fileType == 'excel'|| input.fileType == 'csv'",
                          checkboxInput("header", "Sutun Basligi", TRUE)),
         conditionalPanel("input.fileType == 'csv'",
-                         radioButtons("sep", "Ayrac", c( Comma = ",", Semicolon = ";", Tab = "\t"), ",",
+                         radioButtons("sep", "Ayrac", c( Virgul = ",", NoktaliVirgul = ";", Tab = "\t"), ",",
                                       inline = TRUE)),
         actionButton("btSubmit", "Yukle"),
         htmlOutput("InputValidation")
