@@ -187,7 +187,7 @@ observeEvent(input$btExplore,{
     ValTabs$Tabs = FALSE
     ValTabs$Plots = TRUE
 
-    newtab <- switch(input$MenuTabs, "DataSource" = "Univariate","Univariate" = "DataSource")
+    newtab <- switch(input$MenuTabs, "VeriYukleme" = "Univariate","Univariate" = "VeriYukleme")
     updateTabItems(session, "MenuTabs", newtab)
   }
 })
