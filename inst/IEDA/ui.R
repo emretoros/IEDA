@@ -18,7 +18,7 @@ ui = dashboardPage(title = "Kesifsel Veri Analizi ",
   dashboardSidebar(
     width = 250,
     sidebarMenu(id = "MenuTabs",
-      menuItem("Ana Sayfa", tabName = "Ana Sayfa", icon = icon("home")),
+      menuItem("Ana Sayfa", tabName = "AnaSayfa", icon = icon("home")),
       menuItem("Veri Yukleme", tabName = "VeriYukleme", icon = icon("file")),
       menuItem("Tek Degiskenli Analiz", tabName = "TekDegiskenliAnaliz", icon = icon("bar-chart")),
       menuItem("Iki Degiskenli Sacinim", tabName = "IkiDegiskenliSacinim", icon = icon("dot-circle-o")),
@@ -35,43 +35,43 @@ ui = dashboardPage(title = "Kesifsel Veri Analizi ",
   dashboardBody(
     tabItems(
       # ***************************Data Source***************************
-      tabItem(tabName = "Home",
+      tabItem(tabName = "AnaSayfa",
               source("./ui_0Home.R", local = T)[1]),
 
       # ***************************Data Source***************************
-      tabItem(tabName = "DataSource",
+      tabItem(tabName = "VeriYukleme",
               source("./ui_1DataSource.R", local = T)[1]),
 
       # ***************************Univariate Analysis***************************
-      tabItem(tabName = "Univariate",
+      tabItem(tabName = "TekDegiskenliAnaliz",
               source("./ui_2Univariate.R", local = T)[1]),
 
       # ***************************Bi Variate Scatter Plot***************************
-      tabItem(tabName = "ScatterPlot",
+      tabItem(tabName = "IkiDegiskenliSacinim",
               source("./ui_3BiVariateScatter.R", local = T)[1]),
 
       # ***************************Bi Variate Box Plot***************************
-      tabItem(tabName = "BoxPlot",
+      tabItem(tabName = "IkiDegiskenliKutu",
               source("./ui_4BiVariateBox.R", local = T)[1]),
 
       # ***************************Bi Variate Group Bar Plot***************************
-      tabItem(tabName = "GBarPlot",
+      tabItem(tabName = "IkiDegiskenliGrupSutun",
               source("./ui_5BiVariateBar.R", local = T)[1]),
 
       # ***************************Bi Variate Group Histogram***************************
-      tabItem(tabName = "GHistPlot",
+      tabItem(tabName = "IkiDegiskenliGrupHistogram",
               source("./ui_6BiVariateHistogram.R", local = T)[1]),
 
       # ***************************Multi Variate Scatter Plot***************************
-      tabItem(tabName = "MultiScatterPlot",
+      tabItem(tabName = "CokDegiskenliSacinim",
               source("./ui_7MultiScatter.R", local = T)[1]),
 
       # ***************************Multi Variate Box Plot***************************
-      tabItem(tabName = "MultiBoxPlot",
+      tabItem(tabName = "CokDegiskenliKutu",
               source("./ui_8MultiBox.R", local = T)[1]),
 
       # ***************************Multi Variate Box Plot***************************
-      tabItem(tabName = "EDA",
+      tabItem(tabName = "KVA",
               source("./ui_9EDA.R", local = T)[1])
     )
   )
