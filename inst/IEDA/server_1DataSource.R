@@ -5,7 +5,7 @@ library(shinydashboard)
 # **************************Select Inputs**************************
 output$FileInput = renderUI({
   fileTypeString = switch(input$fileType, excel = ".xlsx", rda = ".rda", csv = ".csv")
-  fileInput("datafile", "Choose file", accept = c(fileTypeString))
+  fileInput("datafile", "Dosyanızı buradan yükleyiniz", accept = c(fileTypeString))
 })
 
 output$SelectSheet = renderUI({
