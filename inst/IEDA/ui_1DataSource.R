@@ -1,29 +1,29 @@
 fluidPage(
   fluidRow(
-    box(title = "Input your data file", width = 4, status = "primary", solidHeader = TRUE,
+    box(title = "Veri", width = 4, status = "primary", solidHeader = TRUE,
         collapsible = TRUE,
-        radioButtons("fileType", "Select File Type", c(Excel = "excel", `R Data File` = "rda", CSV = "csv"),
+        radioButtons("fileType", "Select File Type", c(Excel = "Excel Dosyasi", `R Data Dosyasi` = "rda", CSV = "csv"),
                      inline = TRUE),
         uiOutput("FileInput"),
         uiOutput("SelectSheet"),
         conditionalPanel("input.fileType == 'excel'|| input.fileType == 'csv'",
-                         checkboxInput("header", "Header", TRUE)),
+                         checkboxInput("header", "Sutun Basligi", TRUE)),
         conditionalPanel("input.fileType == 'csv'",
-                         radioButtons("sep", "Separator", c( Comma = ",", Semicolon = ";", Tab = "\t"), ",",
+                         radioButtons("sep", "Ayrac", c( Comma = ",", Semicolon = ";", Tab = "\t"), ",",
                                       inline = TRUE)),
-        actionButton("btSubmit", "Submit Data"),
+        actionButton("btSubmit", "Yukle"),
         htmlOutput("InputValidation")
         ),
 
-    tabBox(title = "Data Processing", width = 8, id = "InputData",
-           tabPanel("Data Structure",
+    tabBox(title = "Veri Isleme", width = 8, id = "InputData",
+           tabPanel("Veri Yapisi",
                     conditionalPanel("output.ValFlag", htmlOutput("dataInfo")),
                     conditionalPanel("output.ValFlag", verbatimTextOutput("strData"))),
-           tabPanel("Data Preview",
+           tabPanel("Veri Onizleme",
                     conditionalPanel("output.ValFlag", DT::dataTableOutput("DataTable"))),
-           tabPanel("Select Column Features",
+           tabPanel("Degisken Olcum Seviyesi Secimi",
                     conditionalPanel("output.ValFlag", withSpinner(uiOutput("SelDimMeas")),
-                                     actionButton("btExplore", "Explore Data")))
+                                     actionButton("btExplore", "Analiz Icin Hazirla")))
            )
     )
   # fluidRow(
