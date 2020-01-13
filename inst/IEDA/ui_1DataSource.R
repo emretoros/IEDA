@@ -2,7 +2,7 @@ fluidPage(
   fluidRow(
     box(title = "Veri", width = 4, status = "primary", solidHeader = TRUE,
         collapsible = TRUE,
-        radioButtons("fileType", "Select File Type", c(Excel = "Excel Dosyasi", `R Data Dosyasi` = "rda", CSV = "csv"),
+        radioButtons("fileType", "Dosya Formatini Seciniz", c(Excel = "Excel Dosyasi", `R Data Dosyasi` = "rda", CSV = "csv"),
                      inline = TRUE),
         uiOutput("FileInput"),
         uiOutput("SelectSheet"),
