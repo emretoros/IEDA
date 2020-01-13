@@ -212,16 +212,16 @@ rdimensions = reactive({
 })
 
 selectdata = reactive({
-  measures = colnames(finalInputData() %>% select_if(is.numeric))
-  dimensions = colnames(finalInputData() %>% select_if(is.factor))
+  sayisal = colnames(finalInputData() %>% select_if(is.numeric))
+  kategorik = colnames(finalInputData() %>% select_if(is.factor))
 
   seldata = data.frame(FeatureName = character(), FeatureValue = character(), stringsAsFactors = FALSE)
-  if(length(measures)>=1)
+  if(length(sayisal)>=1)
     seldata = rbind(seldata,
-                    data.frame(FeatureName = paste("Sayisal"), FeatureValue = measures, stringsAsFactors = FALSE))
-  if(length(dimensions)>=1)
+                    data.frame(FeatureName = paste("Sayisal"), FeatureValue = sayisal, stringsAsFactors = FALSE))
+  if(length(kategorik)>=1)
     seldata = rbind(seldata,
-                    data.frame(FeatureName = paste("Kategorik"), FeatureValue = dimensions, stringsAsFactors = FALSE))
+                    data.frame(FeatureName = paste("Kategorik"), FeatureValue = kategorik, stringsAsFactors = FALSE))
   return(seldata)
 })
 
