@@ -10,8 +10,8 @@ library(shinycssloaders)
 
 ui = dashboardPage(title = "Kesifsel Veri Analizi ",
   skin = "blue",
-  dashboardHeader(title = div(img(src="Title.png",height=50,width=150,align = "left"),
-                              "IEDA"),
+  dashboardHeader(title = div(img(src="Title.png",height=150,width=150,align = "left"),
+                              "KVA"),
                   titleWidth = 250),
 
   # ***************************Dashboard Side Bar***************************
