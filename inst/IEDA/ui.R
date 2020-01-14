@@ -12,7 +12,7 @@ ui = dashboardPage(title = "Kesifsel Veri Analizi ",
   skin = "blue",
   dashboardHeader(title = div(img(src="Title.png",height=150,width=150,align = "left"),
                               "KVA"),
-                  titleWidth = 250),
+                  titleWidth = 500),
 
   # ***************************Dashboard Side Bar***************************
   dashboardSidebar(
