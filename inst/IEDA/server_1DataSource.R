@@ -5,7 +5,7 @@ library(shinydashboard)
 # **************************Select Inputs**************************
 output$FileInput = renderUI({
   fileTypeString = switch(input$fileType, excel = ".xlsx", rda = ".rda", csv = ".csv")
-  fileInput("datafile", "Dosyanizi buradan yukleyiniz", accept = c(fileTypeString))
+  fileInput("datafile", "Choose file", accept = c(fileTypeString))
 })
 
 output$SelectSheet = renderUI({
@@ -105,7 +105,7 @@ options = list(lengthMenu = c(5, 30, 50), pageLength = 5, scrollX = TRUE, scroll
 fn_GetDataStructure = function(idata){
   dstr = data.frame(Variable = idata %>% colnames,
                     Class = idata %>% sapply(class), stringsAsFactors = FALSE)
-  dstr = dstr %>% mutate(DMClass = if_else(Class %in% c("double","integer","numeric"), "Sayisal","Kategorik"))
+  dstr = dstr %>% mutate(DMClass = if_else(Class %in% c("double","integer","numeric"), "Measure","Dimension"))
   row.names(dstr) = NULL
   return(dstr)
 }
@@ -124,9 +124,9 @@ output$SelDimMeas = renderUI({
         paste0("rb", x),
         x,
         choices = c(
-          Kategorik = "Kategorik",
-          Sayisal = "Sayisal",
-          DisardaBirak = "Disarda birak"
+          Dimension = "Dimension",
+          Measure = "Measure",
+          Exclude = "Exclude"
         ),
         selected = rbSel,
         inline = TRUE
@@ -144,8 +144,8 @@ finalInputData = eventReactive(input$btExplore, {
     udstr = data.frame(Variable = names(udstr), UserClass = udstr, stringsAsFactors = FALSE)
     row.names(udstr) = NULL
     udstr$UserClass = str_trim(udstr$UserClass, side = "both")
-    dnames = udstr %>% filter(UserClass == "Kategorik") %>% select(Variable) %>% collect %>% .[["Variable"]]
-    mnames = udstr %>% filter(UserClass == "Sayisal") %>% select(Variable) %>% collect %>% .[["Variable"]]
+    dnames = udstr %>% filter(UserClass == "Dimension") %>% select(Variable) %>% collect %>% .[["Variable"]]
+    mnames = udstr %>% filter(UserClass == "Measure") %>% select(Variable) %>% collect %>% .[["Variable"]]
     usrStructData = uploadData$fiData
     if(!is.null(dnames))
     {
@@ -187,7 +187,7 @@ observeEvent(input$btExplore,{
     ValTabs$Tabs = FALSE
     ValTabs$Plots = TRUE
 
-    newtab <- switch(input$MenuTabs, "VeriYukleme" = "Univariate","Univariate" = "VeriYukleme")
+    newtab <- switch(input$MenuTabs, "DataSource" = "Univariate","Univariate" = "DataSource")
     updateTabItems(session, "MenuTabs", newtab)
   }
 })
@@ -212,16 +212,16 @@ rdimensions = reactive({
 })
 
 selectdata = reactive({
-  sayisal = colnames(finalInputData() %>% select_if(is.numeric))
-  kategorik = colnames(finalInputData() %>% select_if(is.factor))
+  measures = colnames(finalInputData() %>% select_if(is.numeric))
+  dimensions = colnames(finalInputData() %>% select_if(is.factor))
 
   seldata = data.frame(FeatureName = character(), FeatureValue = character(), stringsAsFactors = FALSE)
-  if(length(sayisal)>=1)
+  if(length(measures)>=1)
     seldata = rbind(seldata,
-                    data.frame(FeatureName = paste("Sayisal"), FeatureValue = sayisal, stringsAsFactors = FALSE))
-  if(length(kategorik)>=1)
+                    data.frame(FeatureName = paste("Measures"), FeatureValue = measures, stringsAsFactors = FALSE))
+  if(length(dimensions)>=1)
     seldata = rbind(seldata,
-                    data.frame(FeatureName = paste("Kategorik"), FeatureValue = kategorik, stringsAsFactors = FALSE))
+                    data.frame(FeatureName = paste("Dimensions"), FeatureValue = dimensions, stringsAsFactors = FALSE))
   return(seldata)
 })
 
