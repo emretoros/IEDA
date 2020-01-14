@@ -124,7 +124,7 @@ output$SelDimMeas = renderUI({
         paste0("rb", x),
         x,
         choices = c(
-          Dimension = "Kategorik",
+          Kategorik = "Dimension",
           Measure = "Measure",
           Exclude = "Exclude"
         ),
@@ -144,7 +144,7 @@ finalInputData = eventReactive(input$btExplore, {
     udstr = data.frame(Variable = names(udstr), UserClass = udstr, stringsAsFactors = FALSE)
     row.names(udstr) = NULL
     udstr$UserClass = str_trim(udstr$UserClass, side = "both")
-    dnames = udstr %>% filter(UserClass == "Kategorik") %>% select(Variable) %>% collect %>% .[["Variable"]]
+    dnames = udstr %>% filter(UserClass == "Dimension") %>% select(Variable) %>% collect %>% .[["Variable"]]
     mnames = udstr %>% filter(UserClass == "Measure") %>% select(Variable) %>% collect %>% .[["Variable"]]
     usrStructData = uploadData$fiData
     if(!is.null(dnames))
