@@ -54,15 +54,3 @@ output$Univariate = renderPlotly(
       layout(bargap = 0.1, title = paste0("Distribution of ", input$Dimensions),
              xaxis = list(title = paste0(input$Dimensions)), yaxis = list(title = "No of records"))
   })
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
